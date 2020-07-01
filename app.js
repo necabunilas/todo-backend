@@ -7,6 +7,16 @@ const socket = require("socket.io");
 const app = express();
 const port = 5000;
 
+function ignoreFavicon(req, res, next) {
+  if (req.originalUrl === '/favicon.ico') {
+    res.status(204).json({nope: true});
+  } else {
+    next();
+  }
+}
+
+app.use(ignoreFavicon);
+
 //necessary to get the submitted values from index.html
 app.use(bodyParser.urlencoded({extended:true}));
 
