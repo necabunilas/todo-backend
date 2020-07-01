@@ -11,7 +11,7 @@ const port = 5000;
 app.use(bodyParser.urlencoded({extended:true}));
 
 //connect to db
-mongoose.connect(process.env.DB_HOST, { useUnifiedTopology: true,  useNewUrlParser: true  });
+mongoose.connect("mongodb+srv://admin:admin@cluster0-f5d15.mongodb.net/todoDB", { useUnifiedTopology: true,  useNewUrlParser: true  });
 
 app.get("/", function(req,res){
   res.send("Listening for messages!");
